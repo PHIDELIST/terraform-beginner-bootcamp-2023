@@ -1,4 +1,12 @@
 terraform {
+    cloud {
+    organization = "Delphi"
+
+    workspaces {
+      name = "terra_house-1"
+    }
+  }
+
   required_providers {
     random = {
         source = "hashicorp/random"
@@ -24,7 +32,7 @@ resource "random_string" "bucket_name" {
     lower = true
     upper = false
     special = true
-    override_special = "@$"
+    override_special = "_-"
   
 }
 resource "aws_s3_bucket" "example" {
